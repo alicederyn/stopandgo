@@ -1,3 +1,4 @@
+*.pyc
 stopandgo/.project
 stopandgo/.pydevproject
 .metadata
