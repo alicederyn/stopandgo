@@ -18,6 +18,9 @@ while True:
         if isQuit(event):
             pygame.quit()
             sys.exit()
+        if event.type == pygame.KEYDOWN:
+            if event.mod == 0 and event.unicode == u' ':
+                scheduler.pauseOrResume()
 
     graphics.screen.fill(black)
     scheduler.step()
