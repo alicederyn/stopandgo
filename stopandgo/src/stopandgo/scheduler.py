@@ -7,5 +7,7 @@ FRAMES_PER_SECOND = 60
 def step():
     for thing in world:
         thing.switch()
-    deltat = clock.tick(FRAMES_PER_SECOND)
+    for thing in world:
+        thing.display()
+    clock.tick(FRAMES_PER_SECOND)
 

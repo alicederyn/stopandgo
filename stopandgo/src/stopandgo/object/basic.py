@@ -20,16 +20,16 @@ class Sprite(object.GameObject):
         steps = int(math.ceil(math.sqrt(x*x + y*y)/self.maxspeed - self.overshoot))
         for i in xrange(steps - 1):
             self.loc = (startloc[0] + i*x/steps, startloc[1] + i*y/steps)
-            self.display()
+            self.wait()
         self.loc = (startloc[0] + x, startloc[1] + y)
-        self.display()
+        self.wait()
     
     def leap(self, absx, absy):
         '''
         Teleport the sprite to the specified location, regardless of distance.
         '''
         self.loc = (absx, absy)
-        self.display()
+        self.wait()
 
 
 class BallPatrollingDiamond(Sprite):

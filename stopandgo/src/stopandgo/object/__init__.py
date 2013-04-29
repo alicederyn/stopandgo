@@ -62,24 +62,22 @@ class GameObject(object):
     def __init__(self, sprite, loc = (0,0)):
         self.sprite = sprite
         self.loc = loc
-        self.greenlet = greenlet(self)
+        self.greenlet = greenlet(self.ai)
     
     def __repr__(self):
         return self.__constructor__.asCode(imports=[GameObject.__module__])
     
     def switch(self):
         self.greenlet.switch()
+        
+    def wait(self):
+        greenlet.getcurrent().parent.switch()
     
     def display(self):
         rect = self.sprite.get_rect()
         rect.center = self.loc
         graphics.screen.blit(self.sprite, rect)
-        greenlet.getcurrent().parent.switch()
     
     def ai(self):
         while True:
-            self.display()
-    
-    def __call__(self):
-        self.display()
-        self.ai()
+            self.wait()
